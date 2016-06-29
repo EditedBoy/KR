@@ -1,0 +1,206 @@
+<div class="span4">
+    <div id="all_kids_search" class="input-group">
+        <input type="text" class="form-control" placeholder="{{locale['search']}}" ng-model="childSearchField"
+            ng-change="searchChildren(childSearchField)">
+    </div>
+</div>
+
+<div id="all_kids_add" class="input-group" ng-if="!newChildFormIsShown">
+    <button type="button" class="btn btn-primary" ng-click="toggleNewChild()">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    </button>
+</div>
+
+<div class="table" id="allkidstable">
+
+    <div class="thead row-fluid">
+
+        <div class="th span1"></div>
+        <div class="th span3" ng-click="orderTable('parent.fullName')">
+            {{locale['kids.parentsName']}}
+            <span class="glyphicon glyphicon-sort-by-alphabet" aria-hidden="true" ng-show="predicate == 'parent.fullName' && !reverse"></span>
+            <span class="glyphicon glyphicon-sort-by-alphabet-alt" aria-hidden="true" ng-show="predicate == 'parent.fullName' && reverse"></span>
+        </div>
+        <div class="th span3" ng-click="orderTable('fullName')">
+            {{locale['kids.name']}}
+            <span class="glyphicon glyphicon-sort-by-alphabet" aria-hidden="true" ng-show="predicate == 'fullName' && !reverse"></span>
+            <span class="glyphicon glyphicon-sort-by-alphabet-alt" aria-hidden="true" ng-show="predicate == 'fullName' && reverse"></span>
+        </div>
+        <div class="th span3" ng-click="orderTable('age')">
+            {{locale['kids.age']}}
+            <span class="glyphicon glyphicon-sort-by-order" aria-hidden="true" ng-show="predicate == 'age' && !reverse"></span>
+            <span class="glyphicon glyphicon-sort-by-order-alt" aria-hidden="true" ng-show="predicate == 'age' && reverse"></span>
+        </div>
+
+    </div>
+
+    <!-- New child -->
+    <div id="all_kids_new_child_row kidcollapse-new-child" ng-if="newChildFormIsShown">
+        <div class="tr row-fluid accordion-toggle">
+
+            <div class="td span1">
+                <button type="button" id="collapse-button-new"
+                        class="btn btn-default"
+                        data-toggle="collapse"
+                        data-target="#kidcollapse-new"
+                        ng-click="toggleCollapseButton('collapse-button-new')">
+                    <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+                </button>
+            </div>
+
+            <div class="td span3">
+                <p>
+                    <md-autocomplete
+                            md-search-text-change="searchParents(parentSearchText)"
+                            md-search-text="parentSearchText"
+                            md-selected-item-change="selectNewChildParent(parent)"
+                            md-items="parent in parents"
+                            md-item-text="parent.fullName"
+                            md-min-length="0"
+                            md-delay="2"
+                            placeholder={{locale['search']}}>
+                        <md-item-template>
+                            <span class="item-title">
+                                <md-icon md-svg-icon="img/icons/octicon-repo.svg"></md-icon>
+                                <span> {{parent.fullName}} </span>
+                              </span>
+                              <span class="item-metadata">
+                                <span class="item-metastat">
+                                  <strong>{{parent.email}}</strong>
+                                </span>
+                              </span>
+                        </md-item-template>
+                    </md-autocomplete>
+            </div>
+
+            <div class="td span3">
+                <p>
+                    <input class="form-control" type="text" ng-model="newChild.fullName">
+                </p>
+            </div>
+
+            <div class="td span3">
+                <p>
+                    <md-datepicker ng-model="newChild.dateOfBirth" md-placeholder="01/01/2001"></md-datepicker>
+                </p>
+            </div>
+
+            <div class="td span2">
+                <button type="button" class="btn btn-primary" ng-click="addChild(newChild)">
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn-default" ng-click="toggleNewChild()">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
+            </div>
+
+        </div>
+
+        <div id="kidcollapse-new" class="kid_detailed_info row-fluid collapse in">
+
+            <div class="span1"></div>
+            <div class="span9">
+                <div class="span6 kid_info">
+                    <div>
+                        <div class="span10">
+                            <p>{{locale['kids.gender']}}</p>
+                        </div>
+                        <md-select ng-model="newChild.gender" placeholder="Boy">
+                            <md-option ng-repeat="key in genderKeys"
+                                       ng-value="genders[key]">{{key}}
+                            </md-option>
+                        </md-select>
+                    </div>
+                    <div>
+                        <div class="span24">
+                            <i class="glyphicon glyphicon-earphone" aria-hidden="true"> {{locale['kids.phone']}}</i>
+                        </div>
+                        <div class="right-align">
+                            <p>
+                                {{newChild.parent.phoneNumber || locale['empty']}}
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="span24">
+                            <i class="glyphicon glyphicon-comment" aria-hidden="true"> {{locale['kids.comment']}}</i>
+                        </div>
+                        <div>
+                            <p>
+                                <textarea class="form-control" ng-model="newChild.comment"></textarea>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /New child -->
+
+    <div id="table-data" ng-repeat="child in children | orderBy:predicate:reverse">
+
+        <div class="tr row-fluid accordion-toggle">
+
+            <div class="td span1">
+                <button type="button" id="{{'collapse-button-' + $index}}"
+                        class="btn btn-default"
+                        data-toggle="collapse"
+                        data-target="#{{ 'kidcollapse' + $index }}"
+                        ng-click="toggleCollapseButton('collapse-button-' + $index)">
+                    <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+                </button>
+            </div>
+
+            <div class="td span3">
+                <p>
+                    {{ child.parentId.fullName }}
+                </p>
+            </div>
+
+            <div class="td span3">
+                <p>
+                    {{ child.fullName }}
+                </p>
+            </div>
+
+            <div class="td span3">
+                <p>{{ child.age }}</p>
+            </div>
+
+            <div class="td span2">
+                <a href="{{'./profile?id=' + child.id}}">
+                    <button type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                    </button>
+                </a>
+            </div>
+
+        </div>
+
+        <div ng-attr-id="{{ 'kidcollapse' + $index }}"
+             class="kid_detailed_info row-fluid collapse out">
+
+            <div class="span1"></div>
+            <div class="span9">
+                <div class="span6 kid_info">
+                    <div>
+                        <div class="span24">
+                            <i class="glyphicon glyphicon-earphone" aria-hidden="true"> {{locale['kids.phone']}}</i>
+                        </div>
+                        <div class="right-align"><p>{{ child.parentId.phoneNumber || locale['empty'] }}</p></div>
+                    </div>
+                    <div>
+                        <div class="span24">
+                            <i class="glyphicon glyphicon-comment" aria-hidden="true"> {{locale['kids.comment']}}</i>
+                        </div>
+                        <div>
+                            <p>
+                                {{ child.comment || locale['empty'] }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

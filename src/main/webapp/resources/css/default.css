@@ -1,0 +1,157 @@
+body {
+    font-family: 'RobotoDraft', 'Roboto', 'Helvetica Neue, Helvetica, Arial', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    letter-spacing: 0.01rem;
+    color: #212121;
+    background-color: #eee;
+}
+
+.logo{
+    background-color: white;
+    padding-left: 50px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    width: 300px;
+}
+
+.navbar{
+    margin-bottom: 0;
+}
+
+.tophead{
+    background-color: white;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.content {
+    background-color: #eee;
+}
+
+#right{
+     text-align: right;
+     font-size:13px;
+}
+
+#main-footer{
+    padding-top: 30px;
+    border-top: 1px solid grey;
+}
+
+.langitem{
+    cursor: pointer;
+}
+
+.wrapper {
+  display: table;
+  height: 100%;
+  width:100%
+}
+.content {
+  display: table-row;
+  height: 100%;
+}
+.footer{
+  display: table-row;
+}
+.error{
+    color:red;
+}
+
+.required:after {
+	content:" *";
+	color: red;
+}
+
+.bottom-msg{
+    margin-top: 20px;
+}
+
+.navbar-brand{
+  font-size: 30;
+}
+
+#topnavbar{
+    background-color: #4285F4;
+    margin: 0;
+}
+
+
+.right-align {
+    text-align: right;
+}
+
+.grey-text {
+    color: #D3D3D3;
+}
+
+select {
+    background: rgba(0,0,0,0.3);
+    color:#fff;
+    text-shadow:0 1px 0 rgba(0,0,0,0.4);
+}
+
+#login-form{
+    margin-top: 30px;
+    min-width: 400px;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 3px 3px 10px grey;
+}
+
+#login-form a{
+    color: grey;
+}
+
+#login-form a:hover{
+    color: #4285F4;
+}
+#reg-form{
+    min-width: 400px;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 3px 3px 10px grey;
+    margin-top:15px;
+    margin-bottom: 20px;
+}
+
+#reg-button{
+    text-align: center;
+}
+
+#reg-form a{
+    color: grey;
+}
+
+#reg-form a:hover{
+    color: #4285F4;
+}
+.message{
+    margin-top: 30px;
+    text-align: center;
+    font-size:18px;
+}
+
+
+#login-form .glyphicon{
+    color: rgb(160,160,160);
+}
+
+#logout{
+     background:none!important;
+     border:none;
+     cursor: pointer;
+}
+
+#command{
+     max-height: 0;
+}
+
+
+

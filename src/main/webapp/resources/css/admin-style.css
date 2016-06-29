@@ -1,0 +1,117 @@
+
+* {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 17px;
+}
+
+strong.title-font {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 22px;
+    color: black;
+}
+
+table{
+    width: 90%;
+}
+
+table, th, td {
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    border: 2px solid #ddd;
+    border-collapse: collapse;
+    padding: 2px;
+}
+
+td {
+    border-collapse: collapse;
+}
+
+tr {
+    padding: 0px;
+    margin: 0px;
+    border-collapse: collapse;
+    border: 2px solid #ddd;
+}
+
+th {
+    border: 2px solid #ddd;
+    height: 50px;
+    width: auto;
+    background-color: #4d94ff;
+    color: white;
+}
+
+th.for-button{
+    width: 10%;
+}
+
+.reg-form {
+    min-width: 400px;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 3px 3px 10px grey;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.for-table {
+    block:fixed;
+    margin: auto;
+	width: auto;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.for-table-fields {
+    margin: auto;
+	padding-top: 10px;
+	padding-bottom: 15px;
+}
+
+.hide-border {
+    border: hidden;
+}
+
+.for-field {
+    height: 30px;
+    width: 350px;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+.for-field1 {
+    height: 30px;
+    width: 150px;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+.for-field2 {
+    height: 30px;
+    width: 150px;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+.table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover {
+    background-color: rgb(204, 204, 255);
+}
+
+.tr-not-active {
+    background-color: rgb(255, 214, 153);
+}
+
+.set-standard-color {
+    background-color: rgb(238, 238, 238);
+}
+
+.img-size {
+    width: 30px;
+    height: 30px;
+}
+
+.sizing-between {
+    margin: 0px;
+    margin-bottom: 35px;
+}
