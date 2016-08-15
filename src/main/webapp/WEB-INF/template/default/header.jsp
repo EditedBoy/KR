@@ -4,13 +4,6 @@
     uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<div class="tophead">
-    <div class="logo">
-        <a href="/home">
-        <img src="resources/img/logo.png" width="300"  />
-        </a>
-    </div>
-</div>
 
 <nav class="navbar navbar-material-blue-500">
     <div class="container">
